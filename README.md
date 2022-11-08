@@ -2,6 +2,83 @@
 
 ## Build Setup
 
+```
+CRIAÇÃO BLOG deep-sea-jellyfish-blog
+LINK: https://tailwindcss.com/docs/guides/nuxtjs
+https://support.google.com/adsense/answer/9274019?hl=en //Get and copy the AdSense code
+https://support.google.com/adsense/answer/6084409?hl=en //Link Analytics and AdSense
+
+
+COMANDOS:
+npm run dev
+
+npm run build
+npm run start
+
+npm run test
+
+
+DESCRIÇÃO:
+1.Create your project - npx create-nuxt-app deep-sea-jellyfish-blog
+
+2.Install and Init Tailwind CSS
+npm install -D tailwindcss postcss@latest autoprefixer@latest @nuxt/postcss8
+npx tailwindcss init
+
+3.Enable the Nuxt.js PostCSS plugin
+In your nuxt.config.js file, enable the @nuxt/postcss8 plugin.
+export default {
+  buildModules: [
+    '@nuxt/postcss8',
+    // ...
+  ],
+}
+
+4.Add Tailwind to your PostCSS configuration
+Add tailwindcss and autoprefixer to the build.postcss.plugins object of your nuxt.config.js file.
+export default {
+  build: {
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    },
+  }
+}
+
+5.Configure your template paths
+Add the paths to all of your template files in your tailwind.config.js file.
+module.exports = {
+  content: [
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./nuxt.config.{js,ts}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+6.Add the Tailwind directives to your CSS
+Create an ./assets/css/main.css file and add the @tailwind directives for each of Tailwind’s layers.
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+7.Import the CSS file
+Add the newly-created ./assets/css/main.css file to the css array in the nuxt.config.js file.
+'@/assets/css/main.css'
+
+8.Start your build process
+Run your build process with "npm run dev".
+
+```
+
+### Model
 ```bash
 # install dependencies
 $ npm install
