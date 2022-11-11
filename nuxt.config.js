@@ -20,7 +20,7 @@ export default {
     script: [
       {
         src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
-        'data-ad-client': 'ca-pub-1849446166424024',
+        'data-ad-client': process.env.GOOGLE_AD_KEY,
         async: true,
         crossorigin: "anonymous"
       }
@@ -29,7 +29,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@/assets/css/main.css'
+    '@/assets/css/main.css',
+    '@/assets/css/style.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -46,23 +47,56 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     // https://tailwindcss.com/docs/guides/nuxtjs
-    '@nuxt/postcss8'
+    '@nuxt/postcss8',
+    '@nuxtjs/dotenv'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    ['@nuxtjs/google-adsense']
+    ['@nuxtjs/google-adsense'],
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: process.env.FIREBASE_API_KEY,
+          authDomain: 'deep-sea-jellyfish.firebaseapp.com',
+          projectId: 'deep-sea-jellyfish',
+          storageBucket: 'deep-sea-jellyfish.appspot.com',
+          messagingSenderId: '140244627619',
+          appId: '1:140244627619:web:45ae3445ea7b3fae2fcf16',
+          measurementId: 'G-YWN0STQ8E6'
+        },
+        services: {
+          auth: true, // Just as example. Can be any other service.
+          storage: true,
+          database: true,
+          performance: true,
+          analytics: true
+        }
+      }
+    ]
   ],
   'google-adsense': {
-    id: 'ca-pub-#########'
+    id: process.env.GOOGLE_AD_KEY
+  },
+  auth: {
+    persistence: 'local', // default
+    initialize: {
+      onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
+      onAuthStateChangedAction: 'onAuthStateChangedAction',
+      subscribeManually: false
+    },
+    ssr: false, // default
+    emulatorPort: 9099,
+    emulatorHost: 'http://localhost',
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: process.env.BASE_URL || '/'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

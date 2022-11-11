@@ -7,6 +7,8 @@ CRIAÇÃO BLOG deep-sea-jellyfish-blog
 LINK: https://tailwindcss.com/docs/guides/nuxtjs
 https://support.google.com/adsense/answer/9274019?hl=en //Get and copy the AdSense code
 https://support.google.com/adsense/answer/6084409?hl=en //Link Analytics and AdSense
+https://console.firebase.google.com/u/1/project/deep-sea-jellyfish/overview // tutorial firebase basic
+https://firebase.nuxtjs.org/guide/getting-started // using firebase with nuxt
 
 
 COMANDOS:
