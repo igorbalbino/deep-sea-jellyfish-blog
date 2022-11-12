@@ -80,6 +80,26 @@ Run your build process with "npm run dev".
 
 ```
 
+### Instalar e configurar Firebase
+Precisei atualizar o NodeJS para 16.4.2 para fazer isso.
+Em primeiro lugar é necessário entrar no site do Firebase, criar o projeto, linkar o app e pegar os dados, isso é de boa.
+Depois disso, no seu projeto, roda:
+```npm install firebase```
+Para instalar as dependencias locais do Firebase.
+
+Depois rode:
+```npm instal -g firebase-tools```
+Para ter os comandos do firebase em CLI.
+
+Após esses passos, é preciso fazer o login. Rode o comando:
+```firebase login```
+E abrirá uma inteface web do Google para login. Faça login e depois rode:
+```firebase init```
+Configure o projeto.
+Esse aqui foi configurado como hosting com configuração local.
+
+```model```
+
 ### Model
 ```bash
 # install dependencies

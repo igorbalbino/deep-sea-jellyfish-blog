@@ -62,7 +62,7 @@ export default {
         config: {
           apiKey: process.env.FIREBASE_API_KEY,
           authDomain: 'deep-sea-jellyfish.firebaseapp.com',
-          projectId: 'deep-sea-jellyfish',
+          projectId: process.env.FIREBASE_PROJECT_ID,
           storageBucket: 'deep-sea-jellyfish.appspot.com',
           messagingSenderId: '140244627619',
           appId: '1:140244627619:web:45ae3445ea7b3fae2fcf16',

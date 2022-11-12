@@ -40,6 +40,8 @@ import BarraNavegacao from './BarraNavegacao.vue';
 import Carrossel from './Carrossel.vue';
 import GoogleAd from './GoogleAd.vue';
 import Footer from './Footer.vue';
+import firestoreDb from '../server/firestore'
+import { collection, addDoc } from "firebase/firestore"
 
 export default {
     name: "Inicio",
@@ -48,14 +50,25 @@ export default {
       return {
         mainText: '',
         name: '',
-        email: ''
+        emailsCollection: collection(firestoreDb, 'newsletter')
       }
     },
     mounted() {
+      var res = this.makeTest()
       console.log('CREATEEEEEEEEEEEEEEEEEEED!')
     },
     methods: {
-      
+      async makeTest() {
+        try {
+          const docRef = await addDoc(collection(firestoreDb, "newsletter"), {
+            email: "test@test.com",
+            ativo: "N"
+          })
+          Promise.resolve("Document written with ID: ", docRef.id)
+        } catch (e) {
+          Promise.reject("Error adding document: ", e)
+        }
+      }
     }
 }
 </script>
