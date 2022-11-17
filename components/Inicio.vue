@@ -18,14 +18,14 @@
           </div>
           <span class="texto-comum">aaaaaaa</span>
           <div class="flex flex-col">
-            <form @submit.prevent="" class="flex flex-col">
+            <div id="newsletter-form" class="flex flex-col">
               <span class="texto-comum">Inscreva-se na nossa Newsletter para não ficar de fora de nada!</span>
               <br />
-              <span class="texto-comum">Nome: </span><input type="text" v-model="name" class="border-2 border-red-900" />
+              <span id="newsletter-nome" class="texto-comum">Nome: </span><input v-model="nome" type="text" class="border-2 border-red-900" />
               <br />
-              <span class="texto-comum">Email: </span><input type="text" v-model="email" class="border-2 border-red-900" />
-              <button type="submit"><strong>Inscrever</strong></button>
-            </form>
+              <span id="newsletter-email" class="texto-comum">Email: </span><input v-model="email" type="text" class="border-2 border-red-900" />
+              <input class="my-8 py-4 hover:bg-gray-400" type="submit" value="Inscrver" :onclick="addEmailToNewsletter()" />
+            </div>
           </div>
         </main>
       </div>
@@ -40,34 +40,26 @@ import BarraNavegacao from './BarraNavegacao.vue';
 import Carrossel from './Carrossel.vue';
 import GoogleAd from './GoogleAd.vue';
 import Footer from './Footer.vue';
-import firestoreDb from '../server/firestore'
-import { collection, addDoc } from "firebase/firestore"
+import { createRegister, getAllRegister } from '../server/firestore'
 
 export default {
     name: "Inicio",
     components: { BarraNavegacao, Carrossel, GoogleAd, Footer },
     data() {
       return {
-        mainText: '',
-        name: '',
-        emailsCollection: collection(firestoreDb, 'newsletter')
+        nome: '',
+        email: '',
+        docs: []
       }
     },
-    mounted() {
-      var res = this.makeTest()
-      console.log('CREATEEEEEEEEEEEEEEEEEEED!')
-    },
     methods: {
-      async makeTest() {
-        try {
-          const docRef = await addDoc(collection(firestoreDb, "newsletter"), {
-            email: "test@test.com",
-            ativo: "N"
-          })
-          Promise.resolve("Document written with ID: ", docRef.id)
-        } catch (e) {
-          Promise.reject("Error adding document: ", e)
-        }
+      addEmailToNewsletter(){
+        var res = createRegister('newsletter', {
+          ativo: "S",
+          email: this.email,
+          nome: this.nome
+        })
+        console.log('res: ', res)
       }
     }
 }

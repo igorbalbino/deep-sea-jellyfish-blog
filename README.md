@@ -97,6 +97,7 @@ E abrirá uma inteface web do Google para login. Faça login e depois rode:
 ```firebase init```
 Configure o projeto.
 Esse aqui foi configurado como hosting com configuração local.
+https://firebase.google.com/docs/reference/js/app
 
 ```model```
 

@@ -61,12 +61,12 @@ export default {
       {
         config: {
           apiKey: process.env.FIREBASE_API_KEY,
-          authDomain: 'deep-sea-jellyfish.firebaseapp.com',
+          authDomain: process.env.AUTH_DOMAIN,
           projectId: process.env.FIREBASE_PROJECT_ID,
-          storageBucket: 'deep-sea-jellyfish.appspot.com',
-          messagingSenderId: '140244627619',
-          appId: '1:140244627619:web:45ae3445ea7b3fae2fcf16',
-          measurementId: 'G-YWN0STQ8E6'
+          storageBucket: process.env.STOREGE_BUCKET,
+          messagingSenderId: process.env.MESSAGING_SENDER_ID,
+          appId: process.env.APP_ID,
+          measurementId: process.env.MEASUREMENT_ID
         },
         services: {
           auth: true, // Just as example. Can be any other service.

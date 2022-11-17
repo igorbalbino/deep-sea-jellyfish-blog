@@ -1,28 +1,17 @@
-import { getApps, getApp, deleteApp, initializeApp } from "firebase/app"
+import { getApps, getApp, initializeApp } from "firebase/app"
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBiJf5VpPni5XudcpPeavsr47cFxkXECpE",
-  authDomain: "deep-sea-jellyfish.firebaseapp.com",
-  projectId: "deep-sea-jellyfish",
-  storageBucket: "deep-sea-jellyfish.appspot.com",
-  messagingSenderId: "140244627619",
-  appId: "1:140244627619:web:0010e13ea51744f92fcf16",
-  measurementId: "G-P3F4JVXTZZ"
-};
-const dbName = 'Deep Sea Jellyfish'
-
-if(getApps()) deleteFirestoreApps()
-
-// Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig, dbName)
-
-function deleteFirestoreApps(){
-  getApps().forEach(function(app) {
-    console.log(app)
-    deleteApp(app)
-  })
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.STOREGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID
 }
+
+const firebaseApp = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig)
 
 export default firebaseApp
