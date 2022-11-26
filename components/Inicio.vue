@@ -54,11 +54,7 @@ export default {
     },
     methods: {
       addEmailToNewsletter(){
-        var res = createRegister('newsletter', {
-          ativo: "S",
-          email: this.email,
-          nome: this.nome
-        })
+        var res = createRegister('Newsletter', new Newsletter(this.nome, this.email, true).toString())
         console.log('res: ', res)
       }
     }
